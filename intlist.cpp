@@ -9,64 +9,129 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-    //IMPLEMENT THIS
+    head = source.head;
+    tail = source.tail;
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
+    Node * currentNode = head;
+    while(currentNode != nullptr)
+    {
+        Node * temp = currentNode;
+        currentNode = currentNode -> next;
+        delete temp;
+    }
     //IMPLEMENT THIS
 }
 
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+    Node * currentNode = this -> head;
+    while(currentNode != nullptr)
+    {
+        sum +=  currentNode -> info;
+        currentNode = currentNode -> next;
+    }
+    return sum;
 }
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+    Node * currentNode = this -> head;
+    while(currentNode != nullptr)
+    {
+       if(currentNode -> info == value)
+       {
+        return true;
+       }
+       currentNode = currentNode -> next;
+    }
+    return false;
 }
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+   int max = 0;
+   Node * currentNode = this -> head;
+    while(currentNode != nullptr)
+    {
+        if(currentNode -> info > max)
+        {
+            max = currentNode -> info;
+        }
+        currentNode = currentNode -> next;
+    }
+    return max;
 }
 
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+    int count = 0;
+    Node * currentNode = this -> head;
+    while(currentNode != nullptr)
+    {
+        sum += currentNode -> info;
+        count ++;
+    }
+    if(head != nullptr)
+    {
+        sum = sum / count;
+        return sum;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 // inserts value as new node at beginning of list
 void IntList::push_front(int value) {
-    // IMPLEMENT
-}
+    Node * currNode = new Node();
+    currNode -> info = value;
+    Node * temp = head;
+    currNode -> next = temp;
+    head = currNode;
+}   
 
 // append value at end of list
 void IntList::push_back(int value) {
-    // IMPLEMENT
- 
+    Node * currNode = new Node();
+    currNode -> info = value;
+    Node * temp = tail;
+    temp -> next = currNode;
+    tail = currNode;
 }
 
 // return count of values
 int IntList::count() const {
-   //IMPLEMENT THIS
-   return 0;
+   int count = 0;
+   Node * currentNode = this -> head;
+    while(currentNode != nullptr)
+    {
+        count ++;
+        currentNode = currentNode -> next;
+    }
+    return count;
 }
 
 
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
-    //IMPLEMENT
-    return *this;
+    head = source.head;
+    tail = source.tail;
 }
 
 // constructor sets up empty list
 IntList::IntList(){ 
-    //IMPLEMENT THIS 
+    head = nullptr;
+    tail = nullptr;
+
 }
 
 
