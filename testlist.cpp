@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
         cout << "usage: " << argv[0] << " int [int ...]" << endl;
         return 1;
     }
+    
     initial_size = argc - 1;
     for (int i = 1; i < argc; i++) {
         int value = atoi(argv[i]);
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
         if (i == initial_size)
             last = value;
     }
-
+    
     // print and test methods for list1
     cout << "List 1: \n   ";
     list1.print();
@@ -50,12 +51,18 @@ int main(int argc, char *argv[]) {
     cout.setf(ios::showpoint);
     cout.precision(3);
     cout << "   average: " << list1.average() << endl;
-    cout << "   List after push_front(sum): \n   ";
+    cout << endl << "   List after push_front(sum): \n   ";
     list1.push_front(sum);
     list1.print();
+    cout << "   List after push_back(sum): \n   ";
+    list1.push_back(sum);
+    list1.print();
     cout << endl;
+    cout << "   count: \n   ";
+    cout << list1.count()<< endl;
 
     // test methods for empty list2 (just need one contains test though)
+    
     cout << "Empty list 2: \n   ";
     list2.print();
     cout << endl << "   count: " << list2.count() << endl;
@@ -64,11 +71,20 @@ int main(int argc, char *argv[]) {
         << (list2.contains(1)? "yes" : "no") << endl;
     cout << "   max: " << list2.max() << endl;
     cout << "   average: " << list2.average() << endl;
+    cout << "   count: \n   ";
+    cout << list2.count() << endl;
     cout << "   List 2 after push_front(3), then push_front(1): \n   ";
     list2.push_front(3);
     list2.push_front(1);
     list2.print();
+    cout << endl << "   List 2 after push_back(2): \n   ";
+    list2.push_back(2);
+    list2.print();
     cout << endl;
+    
+
     // Write your own test code for other methods
+    
+    
     return 0;
 }

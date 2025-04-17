@@ -70,13 +70,14 @@ int IntList::max() const {
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    int sum = 0;
+    double sum = 0;
     int count = 0;
     Node * currentNode = this -> head;
     while(currentNode != nullptr)
     {
         sum += currentNode -> info;
         count ++;
+        currentNode = currentNode -> next;
     }
     if(head != nullptr)
     {
@@ -93,18 +94,38 @@ double IntList::average() const {
 void IntList::push_front(int value) {
     Node * currNode = new Node();
     currNode -> info = value;
-    Node * temp = head;
-    currNode -> next = temp;
-    head = currNode;
+    if(head != nullptr)
+    {    
+        Node * temp = head;
+        currNode -> next = temp;
+        head = currNode;
+    }
+    else
+    {
+        head = currNode;
+        tail = currNode;
+        currNode -> next = nullptr;
+    }
+
 }   
 
 // append value at end of list
 void IntList::push_back(int value) {
     Node * currNode = new Node();
     currNode -> info = value;
-    Node * temp = tail;
-    temp -> next = currNode;
-    tail = currNode;
+    if(tail != nullptr)
+    {
+        Node * temp = tail;
+        temp -> next = currNode;
+        tail = currNode;
+        currNode -> next = nullptr;
+    }
+    else
+    {
+        head = currNode;
+        tail = currNode;
+        currNode -> next = nullptr;
+    }
 }
 
 // return count of values
@@ -125,6 +146,7 @@ int IntList::count() const {
 IntList& IntList::operator=(const IntList& source){
     head = source.head;
     tail = source.tail;
+    return *this;
 }
 
 // constructor sets up empty list
