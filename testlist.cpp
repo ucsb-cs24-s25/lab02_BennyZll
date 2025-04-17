@@ -51,10 +51,10 @@ int main(int argc, char *argv[]) {
     cout.setf(ios::showpoint);
     cout.precision(3);
     cout << "   average: " << list1.average() << endl;
-    cout << endl << "   List after push_front(sum): \n   ";
+    cout << "   List after push_front(sum): \n   ";
     list1.push_front(sum);
     list1.print();
-    cout << "   List after push_back(sum): \n   ";
+    cout <<  endl << "   List after push_back(sum): \n   ";
     list1.push_back(sum);
     list1.print();
     cout << endl;
