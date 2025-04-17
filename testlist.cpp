@@ -85,6 +85,8 @@ int main(int argc, char *argv[]) {
 
     // Write your own test code for other methods
     
-    
+    IntList list3;
+    list3 = list1;
+    list3.print();
     return 0;
 }

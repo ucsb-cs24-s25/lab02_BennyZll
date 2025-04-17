@@ -151,8 +151,13 @@ IntList& IntList::operator=(const IntList& source){
         currentNode = currentNode -> next;
         delete prev;
     }
-    head = source.head;
-    tail = source.tail;
+    head = nullptr;
+    tail = nullptr;
+    currentNode = source.head;
+    while(currentNode != nullptr)
+    {
+        push_back(currentNode -> info);
+    }
     return *this;
 }
 
