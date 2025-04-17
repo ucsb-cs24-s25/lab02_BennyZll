@@ -157,6 +157,7 @@ IntList& IntList::operator=(const IntList& source){
     while(currentNode != nullptr)
     {
         push_back(currentNode -> info);
+        currentNode = currentNode -> next;
     }
     return *this;
 }
